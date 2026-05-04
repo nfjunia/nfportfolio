@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import { portfolio } from "@/lib/data";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
+    contact: "",
     email: "",
     message: "",
   });
@@ -26,17 +28,34 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const subject = encodeURIComponent("Portfolio Contact Request");
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
-    );
-    const mailtoLink = `mailto:nfjunia@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    window.location.href = mailtoLink;
+      const data = await response.json();
 
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+      if (data.success) {
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        setFormData({ fullName: "", contact: "", email: "", message: "" });
+      } else {
+        toast.error(data.error || "Failed to send message. Please try again.");
+        if (data.details) {
+          data.details.forEach((detail: { field: string; message: string }) => {
+            toast.error(`${detail.field}: ${detail.message}`);
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -159,20 +178,39 @@ export function Contact() {
             >
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="fullName"
                   className="block text-sm font-medium mb-2"
                 >
-                  Name
+                  Full Name
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  id="fullName"
+                  name="fullName"
+                  value={formData.fullName}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 rounded-lg bg-background border border-border focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="Your name"
+                  placeholder="Your full name"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="contact"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Contact Number
+                </label>
+                <input
+                  type="tel"
+                  id="contact"
+                  name="contact"
+                  value={formData.contact}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 rounded-lg bg-background border border-border focus:border-blue-500 focus:outline-none transition-colors"
+                  placeholder="Your phone number"
                 />
               </div>
 
@@ -221,13 +259,9 @@ export function Contact() {
                 whileTap={{ scale: 0.95 }}
                 className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/20 transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Opening mail client..." : "Send Message"}
+                {isSubmitting ? "Sending..." : "Send Message"}
                 {!isSubmitting && <Send className="w-4 h-4" />}
               </motion.button>
-              <p className="text-xs text-foreground/60 mt-3">
-                A new email to <strong>nfjunia@gmail.com</strong> will open so
-                your message goes directly to me.
-              </p>
             </form>
           </motion.div>
         </motion.div>
