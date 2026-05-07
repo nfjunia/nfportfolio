@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { portfolio } from "@/lib/data";
 import { ArrowRight, GitBranch, Mail } from "lucide-react";
 
@@ -16,13 +16,16 @@ export function Hero() {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.85,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
