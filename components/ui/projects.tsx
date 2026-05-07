@@ -23,7 +23,6 @@ export const Projects = () => {
       transition: { duration: 0.5 },
     },
   };
-
   const featuredProjects = portfolio.projects.filter((p) => p.featured);
   const otherProjects = portfolio.projects.filter((p) => !p.featured);
 
@@ -51,8 +50,8 @@ export const Projects = () => {
           className="space-y-8"
         >
           {/* Featured Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
+          <div className="grid grid-cols-3 gap-8 md:px-16">
+            {featuredProjects.map((project: any) => (
               <motion.div key={project.id} variants={itemVariants}>
                 <ProjectCard
                   title={project.title}

@@ -7,7 +7,7 @@ import { ExternalLink, GitBranch } from "lucide-react";
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: string;
+  image: any;
   tags: string[];
   link: string;
   github: string;
@@ -30,9 +30,9 @@ export function ProjectCard({
         featured ? "md:col-span-2" : ""
       }`}
     >
-      <div className="relative h-64 md:h-72 bg-gradient-to-br from-blue-500/10 to-purple-600/10 overflow-hidden">
+      <div className="relative h-64 bg-gradient-to-br from-blue-500/10 to-purple-600/10 overflow-hidden">
         <Image
-          src={require("../../assets/images/nf.png")}
+          src={image}
           alt={title}
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-500"

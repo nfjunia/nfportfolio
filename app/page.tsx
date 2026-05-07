@@ -6,17 +6,17 @@ import { Projects } from "@/components/ui/projects";
 import { Experience } from "@/components/ui/experience";
 import { Contact } from "@/components/ui/contact";
 import { Footer } from "@/components/ui/footer";
+import WorkedWith from "@/components/ui/companies";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <About />
+      <WorkedWith />
       <Skills />
       <Projects />
       <Experience />
-      <Contact />
       <Footer />
     </main>
   );

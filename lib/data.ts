@@ -1,11 +1,13 @@
+import pic1 from "../assets/images/nf.png";
+
 export const portfolio = {
   name: "Solomon Waja",
-  title: "Full-Stack Developer",
-  tagline: "Building beautiful, scalable web experiences",
+  title: "Full-stack Developer",
+  tagline: "Building beautiful, scalable web experiences & mobile apps",
   email: "nfjunia@gmail.com",
   phone: "0531942973",
   location: "Remote / Worldwide",
-  bio: "I&apos;m a full-stack developer passionate about creating elegant solutions to complex problems. With 5+ years of experience, I specialize in React, Next.js, and Node.js.",
+  bio: `I'm a full-stack developer passionate about creating elegant solutions to complex problems. With 5+ years of experience, I specialize in React, Next.js, and Node.js.`,
 
   skills: [
     {
@@ -34,48 +36,34 @@ export const portfolio = {
       title: "AI Content Generator",
       description:
         "A powerful AI-powered content generation platform that helps creators produce high-quality content in minutes.",
-      image:
-        "https://images.unsplash.com/photo-1676573267769-f6b1e0b7e7a0?w=500&h=300&fit=crop",
+      image: pic1,
       tags: ["Next.js", "OpenAI", "Stripe", "TypeScript"],
       link: "#",
       github: "#",
       featured: true,
     },
-    {
-      id: 2,
-      title: "Task Management Suite",
-      description:
-        "Collaborative task management tool with real-time updates, team workspaces, and advanced analytics.",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-      tags: ["React", "Node.js", "WebSocket", "MongoDB"],
-      link: "#",
-      github: "#",
-      featured: true,
-    },
+
     {
       id: 3,
       title: "E-commerce Platform",
       description:
         "Full-featured e-commerce platform with inventory management, payment processing, and analytics dashboard.",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1bf4de8?w=500&h=300&fit=crop",
+      image: pic1,
       tags: ["Next.js", "Stripe", "PostgreSQL", "AWS"],
       link: "#",
       github: "#",
-      featured: false,
+      featured: true,
     },
     {
       id: 4,
       title: "Social Analytics Dashboard",
       description:
         "Real-time analytics dashboard for monitoring social media performance across multiple platforms.",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
+      image: pic1,
       tags: ["React", "D3.js", "Node.js", "PostgreSQL"],
       link: "#",
       github: "#",
-      featured: false,
+      featured: true,
     },
   ],
 
@@ -122,7 +110,7 @@ export const portfolio = {
   ],
 
   social: {
-    github: "https://github.com",
+    github: "https://github.com/nfjunia",
     twitter: "https://twitter.com",
     linkedin: "https://linkedin.com",
     email: "mailto:nfjunia@gmail.com",

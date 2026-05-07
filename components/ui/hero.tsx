@@ -29,7 +29,7 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 pb-20 px-4">
+    <section className="h-[70vh] flex items-center justify-center pt-44 pb-20 px-4">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -49,7 +49,7 @@ export function Hero() {
 
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl font-bold mb-6 text-pretty"
+          className="text-4xl md:text-5xl font-bold mb-6 text-pretty"
         >
           Hi, I&apos;m{" "}
           <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -59,7 +59,7 @@ export function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl text-foreground/70 mb-8 max-w-2xl mx-auto text-pretty"
+          className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto text-pretty"
         >
           {portfolio.bio}
         </motion.p>
@@ -72,16 +72,16 @@ export function Hero() {
             href="#projects"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-blue-500/20 transition-shadow"
+            className="px-8 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-blue-500/20 transition-shadow"
           >
             View My Work
             <ArrowRight className="w-4 h-4" />
           </motion.a>
           <motion.a
-            href="#contact"
+            href="/contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-lg border border-foreground/20 hover:bg-foreground/5 font-medium transition-colors"
+            className="px-8 py-2 rounded-3xl border border-foreground/20 hover:bg-foreground/5 font-medium transition-colors"
           >
             Get in Touch
           </motion.a>
@@ -96,17 +96,17 @@ export function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1, y: -3 }}
-            className="p-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors"
+            className="p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors"
           >
-            <GitBranch className="w-6 h-6" />
+            <GitBranch className="w-4 h-4" />
           </motion.a>
 
           <motion.a
             href={portfolio.social.email}
             whileHover={{ scale: 1.1, y: -3 }}
-            className="p-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors"
+            className="p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors"
           >
-            <Mail className="w-6 h-6" />
+            <Mail className="w-4 h-4" />
           </motion.a>
         </motion.div>
       </motion.div>

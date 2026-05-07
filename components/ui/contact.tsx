@@ -5,6 +5,9 @@ import { portfolio } from "@/lib/data";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { IoLogoInstagram } from "react-icons/io5";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -40,7 +43,11 @@ export function Contact() {
       const data = await response.json();
 
       if (data.success) {
-        toast.success("Message sent successfully! I'll get back to you soon.");
+        toast.success("Message sent successfully! I'll get back to you soon.", {
+          style: {
+            background: "#4ade80",
+          },
+        });
         setFormData({ fullName: "", contact: "", email: "", message: "" });
       } else {
         toast.error(data.error || "Failed to send message. Please try again.");
@@ -79,7 +86,19 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mb-32">
+        <div className="w-full text-center pb-12">
+          <motion.div variants={itemVariants} className="mb-6 mx-auto">
+            <div className="inline-block">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-foreground/20 backdrop-blur-sm">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-sm font-medium text-foreground/80">
+                  Get in Touch
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -150,22 +169,34 @@ export function Contact() {
 
             <div className="pt-8 border-t border-foreground/10">
               <h4 className="font-medium mb-4">Follow me</h4>
-              <div className="flex gap-4">
-                {Object.entries(portfolio.social).map(([name, url]) => {
-                  if (name === "email") return null;
-                  return (
-                    <motion.a
-                      key={name}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -3 }}
-                      className="p-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors capitalize text-sm font-medium"
-                    >
-                      {name}
-                    </motion.a>
-                  );
-                })}
+              <div className="flex items-center gap-3">
+                <motion.a
+                  href={"https://www.linkedin.com/in/solomon-waja-92ba19389/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="p-2 rounded-lg bg-foreground/5 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors"
+                >
+                  <FaLinkedinIn size={20} />
+                </motion.a>
+                <motion.a
+                  href={"https://x.com/junia53745"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="p-2 rounded-lg bg-foreground/5 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors"
+                >
+                  <FaSquareXTwitter size={20} />
+                </motion.a>
+                <motion.a
+                  href={"https://www.instagram.com/nfjuniah/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="p-2 rounded-lg bg-foreground/5 hover:bg-foreground/10 text-foreground/60 hover:text-foreground transition-colors"
+                >
+                  <IoLogoInstagram size={20} />
+                </motion.a>
               </div>
             </div>
           </motion.div>

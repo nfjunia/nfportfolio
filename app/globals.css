@@ -143,6 +143,6 @@
     background-attachment: fixed;
   }
   html {
-    @apply font-sans;
+    @apply scroll-smooth;
   }
 }
